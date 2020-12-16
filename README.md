@@ -43,6 +43,7 @@ In this course, we will use the following Python libraries:
 2. Install Pandas `pip install pandas`
 
 ### PANDAS
+` pandasintro.py `
 - Import the Pandas library as pd
 - Define data with column and rows in a variable named d
 - Create a data frame using the function pd.DataFrame() -- (note the Capital D and F)
@@ -52,6 +53,8 @@ In this course, we will use the following Python libraries:
 Before analyzing data, a Data Scientist must extract the data, and make it clean and valuable.
 
 #### EXTRACT DATA
+` extracting_data.py `
+
 Pandas is a library in Python used for data analysis and data manipulation.
 To import data, we us `read_csv()` function to import CSV file.
 - Import the Pandas library
@@ -87,10 +90,73 @@ We can use `describe()` function in Python to summarize data
 - 25%, 50% and 75% are percentiles (explained in the statistics chapter)
 - Max - The highest value
 
-## DS MATHS
+#### DS MATHS
 Mathematical functions are important to know as a data scientist, because we want to make predictions and interpret them.
 
 ### LINEAR FUNCTIONS
 Here, a function is used to relate one variable to another variable.
 
 A linear function has one independent variable (x) and one dependent variable (y).
+
+If we consider the relationship between calorie burnage and average pulse. It is reasonable to assume that, in general, the calorie burnage will change as the average pulse changes - we say that the calorie burnage depends upon the average pulse.
+
+Furthermore, it may be reasonable to assume that as the average pulse increases, so will the calorie burnage. Calorie burnage and average pulse are the two variables being considered.
+
+Because the calorie burnage depends upon the average pulse, we say that calorie burnage is the dependent variable and the average pulse is the independent variable.
+
+` y = f(x) = ax + b `
+
+This function is used to calculate a value for the dependent variable when we choose a value for the independent variable.
+
+Explanation:
+- f(x) = the output (the dependant variable)
+- x = the input (the independant variable)
+- a = slope = is the coefficient of the independent variable. It gives the rate of change of the dependent variable
+- b = intercept = is the value of the dependent variable when x = 0. It is also the point where the diagonal line crosses the vertical axis.
+
+#### Linear Function With One Explanatory Variable
+A function with one explanatory variable means that we use one variable for prediction.
+
+Let us say we want to predict calorie burnage using average pulse. We have the following formula:  
+
+` f(x) = 2x + 80 `
+
+Here, the numbers and variables means:
+- f(x) = The output. This number is where we get the predicted value of Calorie_Burnage
+- x = The input, which is Average_Pulse
+- 2 = Slope = Specifies how much Calorie_Burnage increases if Average_Pulse increases by one. It tells us how "steep" the diagonal line is
+- 80 = Intercept = A fixed value. It is the value of the dependent variable when x = 0
+
+#### PLOTTING LINEAR FUNCTION
+Linear means "straight line".
+
+In plotting a graph, key factors:
+- Horizontal axis is the X axis
+- Vertical Axis is the Y axis
+
+### MATPLOTLIB 
+we will plot the values of Average_Pulse against Calorie_Burnage using the matplotlib library.
+The `plot()` function is used to make a 2D hexagonal binning plot of points x,y
+
+` matplotlibintro.py `
+![graph](files/Figure_1.png)
+
+Example Explained:
+- Import the pyplot module of the matplotlib library
+- Plot the data from Average_Pulse against Calorie_Burnage
+- ` kind='line' ` tells us which type of plot we want. Here, we want to have a straight line
+- ` plt.ylim() ` and ` plt.xlim() ` tells us what value we want the axis to start on. Here, we want the axis to begin from zero
+- ` plt.show() ` shows us the output
+
+The picture(graph) explained:
+1. There is a relationship between Average_Pulse and Calorie_Burnage. Calorie_Burnage increases proportionally with Average_Pulse. It means that we can use Average_Pulse to predict Calorie_Burnage.
+2. The reason the line doesn't start from 0, 80 is the first observation of Average_Pulse and 240 is the first observation of Calorie_Burnage.
+3. As it turns out:
+    - If the average pulse is 80, the calorie burnage is 240
+    - If the average pulse is 90, the calorie burnage is 260
+    - If the average pulse is 100, the calorie burnage is 280
+- There is a pattern. If average pulse increases by 10, the calorie burnage increases by 20.
+
+SLOPE AND INTERCEPT:
+
+` f(x) = 2x + 80 `
