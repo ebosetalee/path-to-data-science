@@ -65,7 +65,7 @@ To import data, we us `read_csv()` function to import CSV file.
 POINTS TO NOTE:
 1. Blank rows - data set loaded using Pandas automatically converts blank cells to NaN
 2. `dropna()` function can be used to remove NaNs
-``` py3
+``` py
 health_data.dropna(axis=0,inplace=True)
 print(health_data)
 ```
@@ -87,10 +87,10 @@ We can use `describe()` function in Python to summarize data
 - Mean - The average value
 - Std - Standard deviation (explained in the statistics chapter)
 - Min - The lowest value
-- 25%, 50% and 75% are percentiles (explained in the statistics chapter)
+- 25%, 50% and 75% are percentiles (explained in the statistics)
 - Max - The highest value
 
-#### DS MATHS
+## MATHS
 Mathematical functions are important to know as a data scientist, because we want to make predictions and interpret them.
 
 ### LINEAR FUNCTIONS
@@ -159,4 +159,102 @@ The picture(graph) explained:
 
 SLOPE AND INTERCEPT:
 
+`slope_and_intercept.py`
+
 ` f(x) = 2x + 80 `
+
+we'll explain how the figure for the function ` y = f(x) = ax + b ` was gotten.
+
+__Find the Slope:__
+
+The slope is defined as how much calorie burnage increases, if average pulse increases by one. It tells us how "steep" the diagonal line is.
+
+We can find the slope by using the proportional difference of two points from the graph:
+- If the average pulse is 80, the calorie burnage is 240
+- If the average pulse is 90, the calorie burnage is 260
+ 
+We see that if average pulse increases with 10, the calorie burnage increases by 20.
+
+`Slope = 20/10 = 2`
+
+The slope is 2.
+
+Mathematically, the calculation for slope is defined as:
+`slope = fx2 - fx1 / x2 - x1`
+
+- fx2 = Second observation of Calorie_Burnage = 260
+- fx1 = First observation of Calorie_Burnage = 240
+- x2 = Second observation of Average_Pulse = 90
+- x1 = First observation of Average_Pulse = 80
+
+`Slope = (260-240) / (90 - 80) = 2`
+
+__Find the Intercept:__
+
+The intercept is where the diagonal line crosses the y-axis, if it were fully drawn. In other words, it is the intercept is the value of y, when x = 0.
+
+__In our health data, we can see that when average_pulse (x) is 0, Calorie_Burnage (y) is 80. Thus, the intercept is 80.__ Sometimes, the intercept has a practical meaning, other times it doesn't.
+However, we need to include the intercept in order to complete the mathematical function's ability to predict Calorie_Burnage correctly.
+
+_Other examples where the intercept of a mathematical function can have a practical meaning:_
+
+- Predicting next years revenue by using marketing expenditure (How much revenue will we have next year, if marketing expenditure is zero?). It is likely to assume that a company will still have some revenue even though if it does not spend money on marketing.
+- Fuel usage with speed (How much fuel do we use if speed is equal to 0 mph?). A car that uses gasoline will still use fuel when it is idle.
+
+### Finding the Slope and Intercept Using Python
+The `numpy.polyfit()` function returns the slope and intercept.
+
+Explained:
+- Isolate the variables Average_Pulse (x) and Calorie_Burnage (y) from health_data.
+- Call the np.polyfit() function.
+- The last parameter of the function specifies the degree of the function, which in this case is "1".
+
+```py
+health_data = pd.read_csv("health_data.csv", header=0, sep=",")
+
+x = health_data[" Average_Pulse"]
+y = health_data[" Calorie_Burnage"]
+
+slope_intercept = np.polyfit(x,y,1)
+print(slope_intercept)
+```
+` prints [2. 80.] `
+
+This calculates the slope and intercept; slope is 2 and intercept is 80.
+
+Therefore, using ` f(x) or y = 2x + 80 ` if we want to calculate the Calorie_Burnage(y) when Average_Pulse(x) is 135, it is calculated ` f(135) = 2(135) + 80 = 350 `
+
+It is written in python as:
+```py
+def calculate(x):
+    solution = (2 * x) + 80
+    return int(solution)
+
+print(calculate(135))
+print(calculate(125)) # to clarify with the available data.
+```
+
+## STATISTICS
+Statistics is a science of analyzing data. This helps ascertain the prediction's reliability. i.e whether or not we can rely on the prediction made
+
+` statisticsintro.py `
+
+### DESCRIPTIVE STATISTICS
+Descriptive statistics summarizes important features of a data set such as:
+- Count
+- Sum
+- Standard Deviation
+- Percentile
+- Average etc
+
+The ` describe() ` function earlier explained to summarise the data
+
+![graph](files/Figure_2.png)
+The percentiles are used in statistics to give you a number that describes the value that a given percent of the values are lower than.
+
+Explaning the 25% and 75% using the Average_Pulse:
+- The 25% percentile of Average_Pulse means that 25% of all of the training sessions have an average pulse of 100 beats per minute or lower.
+- The 75% percentile of Average_Pulse means that 75% of all the training session have an average pulse of 111 or lower.
+
+To find percentile, we use ` numpy.percentile() `.
+
