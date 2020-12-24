@@ -139,7 +139,7 @@ we will plot the values of Average_Pulse against Calorie_Burnage using the matpl
 The `plot()` function is used to make a 2D hexagonal binning plot of points x,y
 
 ` matplotlibintro.py `
-![graph](files/Figure_1.png)
+![graph](files/figure_1.png)
 
 Example Explained:
 - Import the pyplot module of the matplotlib library
@@ -249,7 +249,7 @@ Descriptive statistics summarizes important features of a data set such as:
 
 The ` describe() ` function earlier explained to summarise the data
 
-![graph](files/Figure_2.png)
+![describe](files/figure_2.png)
 The percentiles are used in statistics to give you a number that describes the value that a given percent of the values are lower than.
 
 Explaning the 25% and 75% using the Average_Pulse:
@@ -257,4 +257,61 @@ Explaning the 25% and 75% using the Average_Pulse:
 - The 75% percentile of Average_Pulse means that 75% of all the training session have an average pulse of 111 or lower.
 
 To find percentile, we use ` numpy.percentile() `.
+### STATISTICS STANDARD DEVIATION
+Standard deviation is a number that describes how spread out the observations are. It is represented as ` std `.
 
+Standard deviation is a measure of uncertainty.
+A low standard deviation means that most of the numbers are close to the mean (average) value.
+A high standard deviation means that the values are spread out over a wider range.
+
+Standard Deviation is often represented by the symbol Sigma: `σ`
+Numpy has a Standard deviation function as ` std() `
+![std](files/figure_3.png)
+
+#### COEFFICIENT OF VARIATION
+This is used to get an idea of how large the standard deviation is. It is defined mathematically as ` coefficient of variation = Standard Deviation (std) / Mean `
+
+![c_of_v](files/figure_4.png)
+
+We see that the variables: Duration, Calorie_Burnage and Hours_Work has a high Standard Deviation compared to Max_Pulse, Average_Pulse and Hours_Sleep.
+
+#### VARIANCE
+Another way to indicate how spread the values are, is to use _Variance_.
+
+Also, if you take the square root of the variance, you get the standard deviation. Or the other way around, if you multiply the standard deviation by itself, you get the variance!
+
+Variance is often represented by the symbol Sigma Square: `σ^2`
+
+How to calculate variance(using Average_Pulse):
+
+Step 1 to Calculate the Variance: Find the Mean.
+We want to find the variance of Average_Pulse.
+
+1. Find the mean:
+
+    ` (80+85+90+95+100+105+110+115+120+125) / 10 = 102.5 `
+    The mean is ` 102.5`.
+
+Step 2: For Each Value - Find the Difference From the Mean
+
+2. Find the difference from the mean for each value:
+
+    e.g ` 80 - 102.5 = -22.5 ` 
+
+Step 3: For Each Difference - Find the Square Value
+
+3. Find the square value for each difference:
+
+    e.g ` (-22.5)^2 = 506.25 `
+
+    Note: We must square the values to get the total spread.
+
+Step 4: The Variance is the Average Number of These Squared Values
+
+4. Sum the squared values and find the average:
+
+    ` (506.25 + 306.25 + 156.25 + 56.25 + 6.25 + 6.25 + 56.25 + 156.25 + 306.25 + 506.25) / 10 = 206.25`
+    The variance is ` 206.25.` 
+
+To verify the result, numpy has a function ` var() ` for calculating variance or the function I wrote to find variance
+![variance](files/figure_5.png)
