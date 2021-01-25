@@ -44,12 +44,20 @@ In this course, we will use the following Python libraries:
 
 ### PANDAS
 ` pandasintro.py `
+
+Pandas is an open source python library providing high performance data manipulation and analysis tool using its powerful data structures. 
+Pandas involve 2 structures: 
+1. Series - a single dimension with a homogenous data type values. `series()`
+2. DataFrame - a two dimension data structure with heterogenous data type elements. `pd.DataFrame()`
 - Import the Pandas library as pd
 - Define data with column and rows in a variable named d
 - Create a data frame using the function pd.DataFrame() -- (note the Capital D and F)
 - The data frame contains 3 columns and 5 rows
 - Print the data frame output with the print() function
 
+__Advantages of Pandas:__
+1. Easy handling of missing data 
+2. Data can be sliced, merged, concatenated and reshaped.
 Before analyzing data, a Data Scientist must extract the data, and make it clean and valuable.
 
 #### EXTRACT DATA
@@ -135,6 +143,7 @@ In plotting a graph, key factors:
 - Vertical Axis is the Y axis
 
 ### MATPLOTLIB 
+This is a plotting library.
 we will plot the values of Average_Pulse against Calorie_Burnage using the matplotlib library.
 The `plot()` function is used to make a 2D hexagonal binning plot of points x,y
 
@@ -275,7 +284,7 @@ This is used to get an idea of how large the standard deviation is. It is define
 
 We see that the variables: Duration, Calorie_Burnage and Hours_Work has a high Standard Deviation compared to Max_Pulse, Average_Pulse and Hours_Sleep.
 
-#### VARIANCE
+### VARIANCE
 Another way to indicate how spread the values are, is to use _Variance_.
 
 Also, if you take the square root of the variance, you get the standard deviation. Or the other way around, if you multiply the standard deviation by itself, you get the variance!
@@ -315,3 +324,62 @@ Step 4: The Variance is the Average Number of These Squared Values
 
 To verify the result, numpy has a function ` var() ` for calculating variance or the function I wrote to find variance
 ![variance](files/figure_5.png)
+
+### CORRELATION
+Correlation measures the relationship between two variables.
+
+Earlier we said that a function has a purpose to predict a value, by converting input (x) to output (f(x)). We can say also say that a function uses the relationship between two variables for prediction.
+
+The correlation coefficient can never be less than -1 or higher than 1:
+
+- 1 = there is a perfect linear relationship between the variables (like Average_Pulse against Calorie_Burnage)
+- 0 = there is no linear relationship between the variables
+- -1 = there is a perfect negative linear relationship between the variables (e.g. Less hours worked, leads to higher calorie burnage during a training session)
+
+#### Example of a Perfect Linear Relationship 
+    Correlation Coefficient = 1
+We will use scatterplot to visualize the relationship between Average_Pulse and Calorie_Burnage. Thus, change kind to "scatter":
+`correlation_stats.py`
+
+### CORRELATION MATRIX
+We can use the `corr()` function in Python to create a correlation matrix. We also use the `round()` function to round the output to two decimals
+
+#### SEABORN 
+Seaborn is a visualization library based on matplotlib. It is an advance statistical and graphical representation library.
+We can use the Seaborn library to create a correlation heat map. Heatmap is used to Visualize the Correlation Between Variables:
+- pip install seaborn
+- Import seaborn as sn
+- Use the health_data set.
+- Use sn.heatmap() to tell Python that we want a heatmap to visualize the correlation matrix.
+- Use the correlation matrix. Define the maximal and minimal values of the heatmap. Define that 0 is the center.
+- Define the colors with sns.diverging_palette. n=500 means that we want 500 types of color in the same color palette.
+- square = True means that we want to see squares.
+
+### CORRELATION VS. CAUSALITY
+Correlation measure the numerical relationship between two variables.
+Using a beach example, the sale of ice cream increases during the summer, the same for drowning accidents. However, does that mean the increase of ice cream sale is the direct cause of increased drowning accidents?
+`corrvscaus.py`
+
+From the example, can we use the ice cream sale to predict drowning accidents? - Maybe Not; except the effects of taking too much ice cream and having side effects e.g eating before swimming etc.
+
+However, wwhat causes drowning?
+- Unskilled swimmers
+- Waves
+- Cramp
+- Seizure disorders
+- Lack of supervision
+- Alcohol (mis)use etc.
+
+Let us reverse the argument:
+
+    Does a low correlation coefficient (close to zero) mean that change in x does not affect y?
+
+Back to the question:
+
+    Can we conclude that Average_Pulse does not affect Calorie_Burnage because of a low correlation coefficient?
+The answer is no.
+
+There is an important difference between correlation and causality:
+
+- Correlation is a number that measures how closely the data are related
+- Causality is the conclusion that x causes y.

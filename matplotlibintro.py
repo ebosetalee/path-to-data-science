@@ -10,3 +10,4 @@ plt.xlim(xmin=0)
 # you can add the max e.g ymax = 400 or xmax = 150
 
 # plt.show() files/Figure_1.png
+
